@@ -1,0 +1,9 @@
+﻿main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+E:\!!Projects VS\!GRAFIKA_KOMPUTEROWA\!PGK_2019\!project_for_lecturers\TEMPLE_RUN\TEMPLE_RUN_GAME\\Dependencies\GLFW\lib-vc2015\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+E:\!!Projects VS\!GRAFIKA_KOMPUTEROWA\!PGK_2019\!project_for_lecturers\TEMPLE_RUN\TEMPLE_RUN_GAME\x64\Debug\TEMPLE_RUN_GAME.exe : fatal error LNK1120: 7 unresolved externals
