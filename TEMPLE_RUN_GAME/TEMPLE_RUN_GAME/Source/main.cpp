@@ -8,8 +8,10 @@ int main(void)
 
 	/* Initialize the library */
 	if (!glfwInit())
+	{
 		return -1;
-
+	}
+		
 	glewInit();
 
 	/* Create a windowed mode window and its OpenGL context */
