@@ -16,8 +16,6 @@ Vertex vertices[] =
 	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(0.f, 0.f)
 };
 unsigned nrOfVertices = (sizeof(vertices) / sizeof(Vertex));
-unsigned hihih = (sizeof(vertices) / sizeof(Vertex));
-unsigned dasdsa = (sizeof(vertices) / sizeof(Vertex));
 
 GLuint indices[] =
 {
