@@ -1,11 +1,19 @@
 # Prerequisites
 *.d
 
+*.swp
+/TAGS
+/lib/opengl/*.so
+/lib/opengl/*.bundle
+/pkg
+/tmp
+
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
+*.ipch
 
 # Precompiled Headers
 *.gch
@@ -32,3 +40,4 @@
 *.app
 /TEMPLE_RUN_GAME/.vs/TEMPLE_RUN_GAME/v15/Browse.VC.db
 /TEMPLE_RUN_GAME/.vs/TEMPLE_RUN_GAME/v15/Browse.VC.opendb
+./.vs
