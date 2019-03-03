@@ -250,7 +250,7 @@ int main(void)
 	glBindVertexArray(0);
 
 
-	//TEXTURE INIT
+	//TEXTURE INIT 0
 	int image_width = 0;
 	int image_height = 0;
 	unsigned char* image = SOIL_load_image("IMAGES/simpson.png", &image_width, &image_height, nullptr, SOIL_LOAD_RGB);
@@ -286,6 +286,44 @@ int main(void)
 	glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
 	SOIL_free_image_data(image);
 
+
+
+	//TEXTURE INIT 1
+	int image_width_1 = 0;
+	int image_height_1 = 0;
+	unsigned char* image_1 = SOIL_load_image("IMAGES/mesh.png", &image_width_1, &image_height_1, nullptr, SOIL_LOAD_RGB);
+	//unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
+
+	GLuint texture1; //0 means ID oh the image
+	glGenTextures(1, &texture1);
+	glBindTexture(GL_TEXTURE_2D, texture1);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);		//magnify pixels 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);					//minimalize pixels
+
+	if (image_1)
+	{
+		std::cerr << "TEXTURE_LOADED" << '\n';
+		/*	std::cerr << image << '\n';
+			std::cerr << image_width << '\n';
+			std::cerr << image_height << '\n';*/
+		assert(image_1 != NULL);
+		assert(image_width_1 != NULL);
+		assert(image_height_1 != NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width_1, image_height_1, 0, GL_RGB, GL_UNSIGNED_BYTE, image_1);	//char is also a byte
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cerr << "ERROR::TEXTURE_LOADING_FAILED" << '\n';
+	}
+
+	glActiveTexture(0);
+	glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
+	SOIL_free_image_data(image_1);
+
 	//MAIN LOOP
 	while (!glfwWindowShouldClose(window))
 	{
@@ -305,10 +343,13 @@ int main(void)
 
 		//Update uniforms
 		glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
+		glUniform1i(glGetUniformLocation(core_program,"texture1"),1);
 
 		//Activate texture
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture0);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, texture1);
 
 		//Bind vertex array object
 		glBindVertexArray(VAO);
