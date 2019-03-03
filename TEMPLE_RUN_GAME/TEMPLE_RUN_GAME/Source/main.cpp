@@ -1,6 +1,12 @@
 #include "../HEADERS/libs.h"
 
+//INCLUDING OWN HEADER
+#include "../HEADERS/Keyboard_Input.h"	//own header are including here
+
+////////////////////////////////////////////////////////////////////////////////
+
 using namespace std;
+//using namespace KEY_PRESS_EVENTS;		//own namespace
 
 Vertex vertices[] =
 {
@@ -146,6 +152,46 @@ bool loadShaders(GLuint & program)
 	glDeleteShader(fragmentShader);
 	return load_success;
 }
+
+//void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
+//{
+//	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) //move forward
+//	{
+//		position.z -= 0.01f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) //move back
+//	{
+//		position.z += 0.01f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //go left
+//	{
+//		position.x -= 0.01f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) //go right
+//	{
+//		position.x += 0.01f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) //rotate left
+//	{
+//		rotation.y -= 1.f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) //rotate right
+//	{
+//		rotation.y += 1.f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) //close the window
+//	{
+//		glfwSetWindowShouldClose(window, GLFW_TRUE);
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) //scale ++
+//	{
+//		scale += 0.1f;
+//	}
+//	else if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) //scale --
+//	{
+//		scale -= 0.1f;
+//	}
+//}
 
 int main(void)
 {
@@ -333,11 +379,11 @@ int main(void)
 
 
 	glm::mat4 ModelMatrix(1.f);
-	ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.f, 0.f, 0.f));
-	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(1.f, 0.f, 0.f));
-	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(0.f, 1.f, 0.f));
-	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(0.f, 0.f, 1.f));
-	ModelMatrix = glm::scale(ModelMatrix, glm::vec3(1.f));
+	ModelMatrix = glm::translate(ModelMatrix, position);
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.x) ,glm::vec3(1.f, 0.f, 0.f));
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.y) ,glm::vec3(0.f, 1.f, 0.f));
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.z) ,glm::vec3(0.f, 0.f, 1.f));
+	ModelMatrix = glm::scale(ModelMatrix, scale);
 
 	//Camera, view and position
 	glm::vec3 camPosition(0.f, 0.f, 1.f);
@@ -363,13 +409,16 @@ int main(void)
 	glUseProgram(0);
 
 	//MAIN LOOP
+	//KEY_PRESS_EVENTS::Keyboard_Input  Obj();	//explicit basic constructor
 	while (!glfwWindowShouldClose(window))
 	{
 		//UPDATE INPUT ----
 		//glfwWindowShouldClose(window,true)
 		glfwPollEvents();
 		//UPDATE ----
-		updateInput(window);
+		//updateInput(window);  //only created event for esc key
+		updateInput(window,position,rotation,scale);
+		//Obj.updateInput_Key(window, position, rotation, scale);
 
 		//DRAW ----
 		//Clear
@@ -385,12 +434,17 @@ int main(void)
 
 
 
-		//Move, rotation and scale
-		ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.f, 0.f, 0.f));	//your vector of matrix
-		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(1.f, 0.f, 0.f));	//rotate of X Axis
-		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.10f), glm::vec3(0.f, 1.f, 0.f));	//rotate of Y Axis
-		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(0.f, 0.f, 1.f));	//rotate of Z Axis
-		ModelMatrix = glm::scale(ModelMatrix, glm::vec3(1.f));
+		//Move, rotation and scale in loop
+		//position.z -= 0.1f;
+		//rotation.y += 2.f;
+		//scale.x += 0.001f;
+
+		ModelMatrix = glm::mat4(1.f);
+		ModelMatrix = glm::translate(ModelMatrix, position);	//your vector of matrix
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.x), glm::vec3(1.f, 0.f, 0.f));	//rotate of X Axis
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.y), glm::vec3(0.f, 1.f, 0.f));	//rotate of Y Axis
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.z), glm::vec3(0.f, 0.f, 1.f));	//rotate of Z Axis
+		ModelMatrix = glm::scale(ModelMatrix, scale);
 		glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"), 1, GL_FALSE, glm::value_ptr(ModelMatrix));
 
 		//glfwGetFramebufferSize(window, &framebufferWidth, &framebufferWidth);
