@@ -1,12 +1,14 @@
 #include "../HEADERS/libs.h"
 
 //INCLUDING OWN HEADER
-#include "../HEADERS/Keyboard_Input.h"	//own header are including here
+//#include "../HEADERS/Keyboard_Input.h"	//own header are including here
 
 ////////////////////////////////////////////////////////////////////////////////
 
 using namespace std;
-//using namespace KEY_PRESS_EVENTS;		//own namespace
+using namespace KEY_PRESS_EVENTS;		//own namespace
+
+KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard; //usun
 
 Vertex vertices[] =
 {
@@ -153,48 +155,44 @@ bool loadShaders(GLuint & program)
 	return load_success;
 }
 
-//void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
+//bool KeyEvent(KEY_EVENT_RECORD & krec, HANDLE _HANDLE_PARAM)
 //{
-//	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) //move forward
+//	DWORD cc;
+//	INPUT_RECORD IN_REC;
+//
+//	for (;;)
 //	{
-//		position.z -= 0.01f;
+//		ReadConsoleInput(_HANDLE_PARAM, &IN_REC, 1, &cc);
+//		if (IN_REC.EventType == KEY_EVENT && ((KEY_EVENT_RECORD&)IN_REC.Event).bKeyDown)
+//		{
+//			krec = (KEY_EVENT_RECORD&)IN_REC.Event;
+//			return true;
+//		}
 //	}
-//	else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) //move back
-//	{
-//		position.z += 0.01f;
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //go left
-//	{
-//		position.x -= 0.01f;
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) //go right
-//	{
-//		position.x += 0.01f;
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) //rotate left
-//	{
-//		rotation.y -= 1.f;
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) //rotate right
-//	{
-//		rotation.y += 1.f;
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) //close the window
-//	{
-//		glfwSetWindowShouldClose(window, GLFW_TRUE);
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) //scale ++
-//	{
-//		scale += 0.1f;
-//	}
-//	else if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) //scale --
-//	{
-//		scale -= 0.1f;
-//	}
+//	return false;
 //}
+
+//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
+void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
+{
+	//std::cout << KeyState << endl;
+	//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
+	//Object_KeyBoard.SetKeyState(KeyState);
+	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
+}
+
+void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
+{
+	//CURRENTLY EMPTY IS
+	//KEY_PRESS_EVENTS::Keyboard_Input * Object_KeyBoard = new Keyboard_Input(glfwGetKey(window,));
+	//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
+	//Object_KeyBoard.updateInput_Key(window, position, rotation, scale);
+	KEY_PRESS_EVENTS::Keyboard_Input::updateInput_Key(window, position, rotation, scale);
+}
 
 int main(void)
 {
+	//KEY_PRESS_EVENTS::Keyboard_Input * Object_KeyBoard = new Keyboard_Input();
 	//INIT GLFW
 	glfwInit();
 
@@ -215,6 +213,8 @@ int main(void)
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE); //for MAC OS
 
 	GLFWwindow * window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,"MY WINDOW", NULL, NULL);
+
+
 
 	glfwGetFramebufferSize(window, &framebufferWidth, &framebufferHeight);
 	glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);
@@ -412,6 +412,9 @@ int main(void)
 	//KEY_PRESS_EVENTS::Keyboard_Input  Obj();	//explicit basic constructor
 	while (!glfwWindowShouldClose(window))
 	{
+		glfwSetKeyCallback(window, keyCallBack);
+		updateInput(window, position, rotation, scale);
+		//Object_KeyBoard.updateInput_Key(window, position, rotation, scale);
 		//UPDATE INPUT ----
 		//glfwWindowShouldClose(window,true)
 		glfwPollEvents();

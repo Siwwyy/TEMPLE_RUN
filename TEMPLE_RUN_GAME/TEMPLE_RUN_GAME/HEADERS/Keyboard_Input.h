@@ -26,6 +26,7 @@
 //SOIL2
 #include<SOIL2.h>
 
+#include <iostream>
 #include <queue>
 //////////////////////////////////////////////
 
@@ -37,7 +38,8 @@ namespace KEY_PRESS_EVENTS
 		/*
 			VARIABLES PRIVATE
 		*/
-		std::queue<int> Key_Queue;
+		static std::queue<int> Key_Queue;
+		int KeyState;
 		//////////////////////////////////////////////////////////////////////////////
 	protected:
 		/*
@@ -45,7 +47,7 @@ namespace KEY_PRESS_EVENTS
 		*/
 
 		//////////////////////////////////////////////////////////////////////////////
-	private:
+	public:
 		/*
 			KONSTRUKTORY
 		*/
@@ -56,12 +58,12 @@ namespace KEY_PRESS_EVENTS
 		/*
 			FUNKCJE PUBLIC
 		*/
-		void updateInput_Key(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale);
+		static void updateInput_Key(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale);
 		//////////////////////////////////////////////////////////////////////////////
 		/*
 			SETTERY
 		*/
-
+		static void SetKeyState(const int KeyState);
 		//////////////////////////////////////////////////////////////////////////////
 		/*
 			GETTERY
