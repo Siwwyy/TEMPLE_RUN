@@ -321,6 +321,11 @@ int main(void)
 		//End draw
 		glfwSwapBuffers(window);
 		glFlush();
+
+		glBindVertexArray(0);
+		glUseProgram(0);
+		glActiveTexture(0);
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	//END OF PROGRAM
 	glfwDestroyWindow(window);
