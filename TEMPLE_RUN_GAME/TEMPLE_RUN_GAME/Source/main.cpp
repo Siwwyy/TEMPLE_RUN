@@ -324,6 +324,22 @@ int main(void)
 	glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
 	SOIL_free_image_data(image_1);
 
+
+	//MATRIX MODEL
+	glm::mat4 ModelMatrix(1.f);
+	ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.f, 0.f, 0.f));
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(1.f, 0.f, 0.f));
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(0.f, 1.f, 0.f));
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(0.f, 0.f, 1.f));
+	ModelMatrix = glm::scale(ModelMatrix, glm::vec3(1.f));
+
+	glUseProgram(core_program);
+
+	//Move, rotate and scale
+	glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"),1,GL_FALSE, glm::value_ptr(ModelMatrix));
+
+	glUseProgram(0);
+
 	//MAIN LOOP
 	while (!glfwWindowShouldClose(window))
 	{
@@ -338,12 +354,20 @@ int main(void)
 		glClearColor(0.f, 0.f, 0.f, 1.f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-		//Use a program
+		//Use a program //IMPORTANT SENT THE PROGRAM BEFORE SENDING THE UNIFORMS!!
 		glUseProgram(core_program);
 
 		//Update uniforms
 		glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
 		glUniform1i(glGetUniformLocation(core_program,"texture1"),1);
+
+		//Move, rotation and scale
+		ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.1f, 0.f, 0.f));	//your vector of matrix
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(1.f, 0.f, 0.f));	//rotate of X Axis
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(0.f, 1.f, 0.f));	//rotate of Y Axis
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(0.f, 0.f, 1.f));	//rotate of Z Axis
+		ModelMatrix = glm::scale(ModelMatrix, glm::vec3(1.f));
+		glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"), 1, GL_FALSE, glm::value_ptr(ModelMatrix));
 
 		//Activate texture
 		glActiveTexture(GL_TEXTURE0);
@@ -375,6 +399,6 @@ int main(void)
 	//DELETE PROGRAM
 	glDeleteProgram(core_program);
 
-	system("pause");
-	return 0;
+	//system("pause");
+	return EXIT_SUCCESS;
 }
