@@ -251,9 +251,40 @@ int main(void)
 
 
 	//TEXTURE INIT
+	int image_width = 0;
+	int image_height = 0;
+	//unsigned char* image = SOIL_load_image("IMAGES/simpson.png", &image_width, &image_height, nullptr, SOIL_LOAD_RGB);
+	unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
 
+	GLuint texture0; //0 means ID oh the image
+	glGenTextures(1, &texture0);
+	glBindTexture(GL_TEXTURE_2D, texture0);
 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);		//magnify pixels 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);					//minimalize pixels
 
+	if (image)
+	{
+		std::cerr << "TEXTURE_LOADED" << '\n';
+	/*	std::cerr << image << '\n';
+		std::cerr << image_width << '\n';
+		std::cerr << image_height << '\n';*/
+		assert(image != NULL);
+		assert(image_width != NULL);
+		assert(image_height != NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);	//char is also a byte
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cerr << "ERROR::TEXTURE_LOADING_FAILED" << '\n';
+	}
+
+	glActiveTexture(0);
+	glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
+	SOIL_free_image_data(image);
 
 	//MAIN LOOP
 	while (!glfwWindowShouldClose(window))
@@ -271,6 +302,11 @@ int main(void)
 
 		//Use a program
 		glUseProgram(core_program);
+
+
+		//Activate texture
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture0);
 
 		//Bind vertex array object
 		glBindVertexArray(VAO);
