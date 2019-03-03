@@ -13,7 +13,7 @@ Vertex vertices[] =
 	//TRIANGLE TWO
 	/*glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),
 	glm::vec3(0.5f, -0.5, 0.f),					glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),*/
-	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(0.f, 0.f)
+	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(1.f, 1.f)
 };
 unsigned nrOfVertices = (sizeof(vertices) / sizeof(Vertex));
 
@@ -303,6 +303,8 @@ int main(void)
 		//Use a program
 		glUseProgram(core_program);
 
+		//Update uniforms
+		glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
 
 		//Activate texture
 		glActiveTexture(GL_TEXTURE0);
