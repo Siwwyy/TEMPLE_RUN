@@ -170,6 +170,7 @@ int main(void)
 
 	GLFWwindow * window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,"MY WINDOW", NULL, NULL);
 
+	glfwGetFramebufferSize(window, &framebufferWidth, &framebufferHeight);
 	glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);
 
 	//glfwGetFramebufferSize(window, &framebufferWidth, &framebufferHeight);
@@ -325,7 +326,12 @@ int main(void)
 	SOIL_free_image_data(image_1);
 
 
-	//MATRIX MODEL
+	//MATRIX MODEL, init MATRICES
+	glm::vec3 position(0.f);
+	glm::vec3 rotation(0.f);
+	glm::vec3 scale(1.f);
+
+
 	glm::mat4 ModelMatrix(1.f);
 	ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.f, 0.f, 0.f));
 	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(1.f, 0.f, 0.f));
@@ -333,10 +339,26 @@ int main(void)
 	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f) ,glm::vec3(0.f, 0.f, 1.f));
 	ModelMatrix = glm::scale(ModelMatrix, glm::vec3(1.f));
 
+	//Camera, view and position
+	glm::vec3 camPosition(0.f, 0.f, 1.f);
+	glm::vec3 worldUp(0.f, 1.f, 0.f);
+	glm::vec3 camFront(0.f, 0.f, -1.f);
+	glm::mat4 ViewMatrix(1.f);
+	ViewMatrix = glm::lookAt(camPosition, camPosition + camFront, worldUp);
+
+	float fov = 90.f;	//its a angle between a object and camera bodu
+	float nearPlane = 0.1f;
+	float farPlane = 1000.f;
+	glm::mat4 ProjectionMatrix(1.f);
+	ProjectionMatrix = glm::perspective(glm::radians(fov), static_cast<float>(framebufferWidth) / framebufferHeight, nearPlane, farPlane);
+
+	//init uniforms
 	glUseProgram(core_program);
 
 	//Move, rotate and scale
 	glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"),1,GL_FALSE, glm::value_ptr(ModelMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(core_program, "ViewMatrix"),1,GL_FALSE, glm::value_ptr(ViewMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"),1,GL_FALSE, glm::value_ptr(ProjectionMatrix));
 
 	glUseProgram(0);
 
@@ -361,13 +383,25 @@ int main(void)
 		glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
 		glUniform1i(glGetUniformLocation(core_program,"texture1"),1);
 
+
+
 		//Move, rotation and scale
-		ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.1f, 0.f, 0.f));	//your vector of matrix
+		ModelMatrix = glm::translate(ModelMatrix, glm::vec3(0.f, 0.f, 0.f));	//your vector of matrix
 		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(1.f, 0.f, 0.f));	//rotate of X Axis
-		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(0.f, 1.f, 0.f));	//rotate of Y Axis
+		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.10f), glm::vec3(0.f, 1.f, 0.f));	//rotate of Y Axis
 		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(0.f), glm::vec3(0.f, 0.f, 1.f));	//rotate of Z Axis
 		ModelMatrix = glm::scale(ModelMatrix, glm::vec3(1.f));
 		glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"), 1, GL_FALSE, glm::value_ptr(ModelMatrix));
+
+		//glfwGetFramebufferSize(window, &framebufferWidth, &framebufferWidth);
+
+		//ProjectionMatrix = glm::mat4(1.f);
+		ProjectionMatrix = glm::perspective(glm::radians(fov), static_cast<float>((framebufferWidth) / framebufferHeight), nearPlane, farPlane);
+		
+		glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"), 1, GL_FALSE, glm::value_ptr(ProjectionMatrix));
+
+		//resizer of window
+		//framebuffer_resize_callback(window, framebufferWidth, framebufferHeight);
 
 		//Activate texture
 		glActiveTexture(GL_TEXTURE0);
@@ -382,7 +416,7 @@ int main(void)
 		//Draw both draw a triangle
 		//glDrawArrays(GL_TRIANGLES, 0, nrOfVertices);		//drawing by vertices
 		glDrawElements(GL_TRIANGLES, nrOfIndices, GL_UNSIGNED_INT, 0);	//drawing by indices
-
+		//system("pause");
 		//End draw
 		glfwSwapBuffers(window);
 		glFlush();
