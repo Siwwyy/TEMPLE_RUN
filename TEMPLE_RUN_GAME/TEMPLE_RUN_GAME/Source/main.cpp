@@ -249,6 +249,12 @@ int main(void)
 	//BIND VAO 0
 	glBindVertexArray(0);
 
+
+	//TEXTURE INIT
+
+
+
+
 	//MAIN LOOP
 	while (!glfwWindowShouldClose(window))
 	{
