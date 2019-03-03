@@ -4,7 +4,7 @@ using namespace std;
 
 Vertex vertices[] =
 {
-	//Position	0 1 2							//Color	RGB									//Texcoords
+	//Position	0 1 2							//Color	RGB									//Texcoords (texture coordinates)
 	//TRIANGLE ONE
 	glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),
 	glm::vec3(-0.5f, -0.5, 0.f),				glm::vec3(0.f, 1.f, 0.f),					glm::vec2(0.f, 0.f),
@@ -153,8 +153,8 @@ int main(void)
 	glfwInit();
 
 	//CREATE WINDOW
-	const int WINDOW_WIDTH = 640;
-	const int WINDOW_HEIGHT= 480;
+	const int WINDOW_WIDTH = 860;
+	const int WINDOW_HEIGHT= 640;
 	int framebufferWidth = 0;
 	int framebufferHeight = 0;
 
@@ -253,8 +253,8 @@ int main(void)
 	//TEXTURE INIT
 	int image_width = 0;
 	int image_height = 0;
-	//unsigned char* image = SOIL_load_image("IMAGES/simpson.png", &image_width, &image_height, nullptr, SOIL_LOAD_RGB);
-	unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
+	unsigned char* image = SOIL_load_image("IMAGES/simpson.png", &image_width, &image_height, nullptr, SOIL_LOAD_RGB);
+	//unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
 
 	GLuint texture0; //0 means ID oh the image
 	glGenTextures(1, &texture0);
