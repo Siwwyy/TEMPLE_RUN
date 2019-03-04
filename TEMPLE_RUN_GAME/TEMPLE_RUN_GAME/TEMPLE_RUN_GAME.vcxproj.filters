@@ -18,13 +18,7 @@
     <ClInclude Include="HEADERS\libs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HEADERS\Keyboard_Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HEADERS\IndexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HEADERS\Keyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HEADERS\Renderer.h">
@@ -45,21 +39,15 @@
     <ClInclude Include="HEADERS\VertexBufferLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADERS\Keyboard_Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOURCE\Keyboard_Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SOURCE\IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SOURCE\Keyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SOURCE\Renderer.cpp">
@@ -75,6 +63,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SOURCE\VertexBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\Keyboard_Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

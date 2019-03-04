@@ -38,15 +38,8 @@
 //////////////////////////////////////////////////////////
 
 //INCLUDING OWN HEADER
-#include "../HEADERS/Keyboard_Input.h"
-#include "Keyboard.h"
-#include "Renderer.h"
-#include "VertexBuffer.h"
-#include "VertexBufferLayout.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
-#include "Shader.h"
-#include "Texture.h"
+//#include "../HEADERS/Keyboard_Input.h"
+#include "../HEADERS/Keyboard.h"
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 

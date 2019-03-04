@@ -1,50 +1,17 @@
-﻿  Application.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\source\application.cpp(78): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\source\application.cpp(157): error C2660: 'Renderer::Draw': function does not take 3 arguments
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): note: see declaration of 'Renderer::Draw'
-  IndexBuffer.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
-  Keyboard.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
+﻿  IndexBuffer.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\IndexBuffer.cpp': No such file or directory
   main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
+e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\libs.h(42): fatal error C1083: Cannot open include file: '../HEADERS/Keyboard.h': No such file or directory
   Renderer.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\vertexbufferlayout.h(20): error C3861: 'ASSERT': identifier not found
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\Renderer.cpp': No such file or directory
   Shader.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\Shader.cpp': No such file or directory
   Texture.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\Texture.cpp': No such file or directory
   VertexArray.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\VertexArray.cpp': No such file or directory
   VertexBuffer.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\renderer.h(18): error C2143: syntax error: missing ',' before '&'
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\vertexarray.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\vertexarray.h(17): error C2143: syntax error: missing ',' before '&'
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\VertexBuffer.cpp': No such file or directory
   Generating Code...

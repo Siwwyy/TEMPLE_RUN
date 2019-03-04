@@ -6,9 +6,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 using namespace std;
-using namespace KEY_PRESS_EVENTS;		//own namespace
-
-KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard; //usun
+//using namespace KEY_PRESS_EVENTS;		//own namespace
 
 Vertex vertices[] =
 {
@@ -172,15 +170,33 @@ bool loadShaders(GLuint & program)
 //	return false;
 //}
 
-void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
-{
-	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
-}
+//void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
+//{
+//	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
+//}
 
 void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
 {
 	KEY_PRESS_EVENTS::Keyboard_Input::updateInput_Key(window, position, rotation, scale);
 }
+
+//DAMIANS'S KEYBOARD INPUT DETECTOR
+//void processInput(GLFWwindow *window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale) // test
+//{
+//	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+//	{
+//		glfwSetWindowShouldClose(window, true);
+//	}
+//
+//	KeyStates newKeyStates;
+//
+//	newKeyStates.W = (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS ? true : false);
+//	newKeyStates.A = (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS ? true : false);
+//	newKeyStates.S = (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS ? true : false);
+//	newKeyStates.D = (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS ? true : false);
+//}
+////////////////////////////////////////////////////////////
+
 
 int main(void)
 {
@@ -397,8 +413,11 @@ int main(void)
 	//KEY_PRESS_EVENTS::Keyboard_Input  Obj();	//explicit basic constructor
 	while (!glfwWindowShouldClose(window))
 	{
-		glfwSetKeyCallback(window, keyCallBack);
-		updateInput(window, position, rotation, scale);
+		//KEYBOARD
+		processInput(window, position, rotation, scale);
+
+		//glfwSetKeyCallback(window, keyCallBack);
+		//updateInput(window, position, rotation, scale);
 		//UPDATE INPUT ----
 		//glfwWindowShouldClose(window,true)
 		glfwPollEvents();
