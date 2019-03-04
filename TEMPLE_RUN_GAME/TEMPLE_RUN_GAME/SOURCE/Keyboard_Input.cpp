@@ -87,50 +87,5 @@ void KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(const int KeyState)
 
 Keyboard_Input::~Keyboard_Input()
 {
-	//if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) //move forward
-	//{
-	//	Key_Queue.push(GLFW_KEY_W);
-	//	position.z -= 0.001f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) //move back
-	//{
-	//	Key_Queue.push(GLFW_KEY_S);
-	//	position.z += 0.001f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //go left
-	//{
-	//	Key_Queue.push(GLFW_KEY_A);
-	//	position.x -= 0.001f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) //go right
-	//{
-	//	Key_Queue.push(GLFW_KEY_D);
-	//	position.x += 0.001f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) //rotate left
-	//{
-	//	Key_Queue.push(GLFW_KEY_Q);
-	//	rotation.y -= 1.f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) //rotate right
-	//{
-	//	Key_Queue.push(GLFW_KEY_E);
-	//	rotation.y += 1.f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) //close the window
-	//{
-	//	Key_Queue.push(GLFW_KEY_ESCAPE);
-	//	glfwSetWindowShouldClose(window, GLFW_TRUE);
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) //scale ++
-	//{
-	//	Key_Queue.push(GLFW_KEY_Z);
-	//	scale += 0.1f;
-	//}
-	//else if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) //scale --
-	//{
-	//	Key_Queue.push(GLFW_KEY_X);
-	//	scale -= 0.1f;
-	//}
-	//Key_Queue.pop();
+	
 }
