@@ -420,7 +420,7 @@ int main(void)
 		glfwPollEvents();
 		//UPDATE ----
 		//updateInput(window);  //only created event for esc key
-		updateInput(window,position,rotation,scale);
+		//updateInput(window,position,rotation,scale);
 		//Obj.updateInput_Key(window, position, rotation, scale);
 
 		//DRAW ----
