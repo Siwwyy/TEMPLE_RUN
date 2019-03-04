@@ -170,10 +170,10 @@ bool loadShaders(GLuint & program)
 //	return false;
 //}
 
-//void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
-//{
-//	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
-//}
+void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
+{
+	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
+}
 
 void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
 {
@@ -414,10 +414,10 @@ int main(void)
 	while (!glfwWindowShouldClose(window))
 	{
 		//KEYBOARD
-		processInput(window, position, rotation, scale);
+	//	processInput(window, position, rotation, scale);
 
-		//glfwSetKeyCallback(window, keyCallBack);
-		//updateInput(window, position, rotation, scale);
+		glfwSetKeyCallback(window, keyCallBack);
+		updateInput(window, position, rotation, scale);
 		//UPDATE INPUT ----
 		//glfwWindowShouldClose(window,true)
 		glfwPollEvents();

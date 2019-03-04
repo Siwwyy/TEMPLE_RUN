@@ -1,5 +1,16 @@
-﻿  main.cpp
+﻿  IndexBuffer.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\IndexBuffer.cpp': No such file or directory
+  main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
-main.obj : error LNK2001: unresolved external symbol __imp__glClear@4
-E:\!!Projects VS\!GRAFIKA_KOMPUTEROWA\!PGK_2019\!project_for_lecturers\TEMPLE_RUN\TEMPLE_RUN_GAME\Release\TEMPLE_RUN_GAME.exe : fatal error LNK1120: 1 unresolved externals
+  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
+e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\temple_run_game\headers\libs.h(42): fatal error C1083: Cannot open include file: '../HEADERS/Keyboard.h': No such file or directory
+  Renderer.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\Renderer.cpp': No such file or directory
+  Shader.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\Shader.cpp': No such file or directory
+  Texture.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\Texture.cpp': No such file or directory
+  VertexArray.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\VertexArray.cpp': No such file or directory
+  VertexBuffer.cpp
+c1xx : fatal error C1083: Cannot open source file: 'SOURCE\VertexBuffer.cpp': No such file or directory
