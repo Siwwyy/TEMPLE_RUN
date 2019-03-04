@@ -135,12 +135,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="HEADERS\IndexBuffer.h" />
+    <ClInclude Include="HEADERS\Keyboard.h" />
     <ClInclude Include="HEADERS\Keyboard_Input.h" />
     <ClInclude Include="HEADERS\libs.h" />
+    <ClInclude Include="HEADERS\Renderer.h" />
+    <ClInclude Include="HEADERS\Shader.h" />
+    <ClInclude Include="HEADERS\Texture.h" />
+    <ClInclude Include="HEADERS\VertexArray.h" />
+    <ClInclude Include="HEADERS\VertexBuffer.h" />
+    <ClInclude Include="HEADERS\VertexBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SOURCE\Application.cpp" />
+    <ClCompile Include="SOURCE\IndexBuffer.cpp" />
+    <ClCompile Include="SOURCE\Keyboard.cpp" />
     <ClCompile Include="SOURCE\Keyboard_Input.cpp" />
     <ClCompile Include="SOURCE\main.cpp" />
+    <ClCompile Include="SOURCE\Renderer.cpp" />
+    <ClCompile Include="SOURCE\Shader.cpp" />
+    <ClCompile Include="SOURCE\Texture.cpp" />
+    <ClCompile Include="SOURCE\VertexArray.cpp" />
+    <ClCompile Include="SOURCE\VertexBuffer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

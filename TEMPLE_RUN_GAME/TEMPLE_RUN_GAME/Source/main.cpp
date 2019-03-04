@@ -172,27 +172,18 @@ bool loadShaders(GLuint & program)
 //	return false;
 //}
 
-//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
 void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
 {
-	//std::cout << KeyState << endl;
-	//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
-	//Object_KeyBoard.SetKeyState(KeyState);
 	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
 }
 
 void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
 {
-	//CURRENTLY EMPTY IS
-	//KEY_PRESS_EVENTS::Keyboard_Input * Object_KeyBoard = new Keyboard_Input(glfwGetKey(window,));
-	//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
-	//Object_KeyBoard.updateInput_Key(window, position, rotation, scale);
 	KEY_PRESS_EVENTS::Keyboard_Input::updateInput_Key(window, position, rotation, scale);
 }
 
 int main(void)
 {
-	//KEY_PRESS_EVENTS::Keyboard_Input * Object_KeyBoard = new Keyboard_Input();
 	//INIT GLFW
 	glfwInit();
 
@@ -315,9 +306,6 @@ int main(void)
 	if (image)
 	{
 		std::cerr << "TEXTURE_LOADED" << '\n';
-	/*	std::cerr << image << '\n';
-		std::cerr << image_width << '\n';
-		std::cerr << image_height << '\n';*/
 		assert(image != NULL);
 		assert(image_width != NULL);
 		assert(image_height != NULL);
@@ -353,9 +341,6 @@ int main(void)
 	if (image_1)
 	{
 		std::cerr << "TEXTURE_LOADED" << '\n';
-		/*	std::cerr << image << '\n';
-			std::cerr << image_width << '\n';
-			std::cerr << image_height << '\n';*/
 		assert(image_1 != NULL);
 		assert(image_width_1 != NULL);
 		assert(image_height_1 != NULL);
@@ -414,14 +399,11 @@ int main(void)
 	{
 		glfwSetKeyCallback(window, keyCallBack);
 		updateInput(window, position, rotation, scale);
-		//Object_KeyBoard.updateInput_Key(window, position, rotation, scale);
 		//UPDATE INPUT ----
 		//glfwWindowShouldClose(window,true)
 		glfwPollEvents();
 		//UPDATE ----
 		//updateInput(window);  //only created event for esc key
-		updateInput(window,position,rotation,scale);
-		//Obj.updateInput_Key(window, position, rotation, scale);
 
 		//DRAW ----
 		//Clear
