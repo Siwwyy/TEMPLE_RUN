@@ -175,18 +175,11 @@ bool loadShaders(GLuint & program)
 //KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
 void keyCallBack(GLFWwindow * window, const int KeyState, const int scancode, const int action, const int mods)
 {
-	//std::cout << KeyState << endl;
-	//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
-	//Object_KeyBoard.SetKeyState(KeyState);
 	KEY_PRESS_EVENTS::Keyboard_Input::SetKeyState(KeyState);
 }
 
 void updateInput(GLFWwindow * window, glm::vec3 & position, glm::vec3 & rotation, glm::vec3 & scale)
 {
-	//CURRENTLY EMPTY IS
-	//KEY_PRESS_EVENTS::Keyboard_Input * Object_KeyBoard = new Keyboard_Input(glfwGetKey(window,));
-	//KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard;
-	//Object_KeyBoard.updateInput_Key(window, position, rotation, scale);
 	KEY_PRESS_EVENTS::Keyboard_Input::updateInput_Key(window, position, rotation, scale);
 }
 
@@ -323,6 +316,7 @@ int main(void)
 		assert(image_height != NULL);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);	//char is also a byte
 		glGenerateMipmap(GL_TEXTURE_2D);
+		glDisable(GL_CULL_FACE);		//to enable double side texture
 	}
 	else
 	{
@@ -361,6 +355,7 @@ int main(void)
 		assert(image_height_1 != NULL);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width_1, image_height_1, 0, GL_RGB, GL_UNSIGNED_BYTE, image_1);	//char is also a byte
 		glGenerateMipmap(GL_TEXTURE_2D);
+		glDisable(GL_CULL_FACE);
 	}
 	else
 	{
