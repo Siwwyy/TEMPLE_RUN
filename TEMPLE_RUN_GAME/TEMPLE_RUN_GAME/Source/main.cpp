@@ -12,16 +12,16 @@ KEY_PRESS_EVENTS::Keyboard_Input Object_KeyBoard; //usun
 
 Vertex vertices[] =
 {
-	//Position	0 1 2							//Color	RGB									//Texcoords (texture coordinates)
+	//Position	0 1 2							//Color	RGB									//Texcoords (texture coordinates)			//Normals
 	//TRIANGLE ONE
-	glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),
-	glm::vec3(-0.5f, -0.5, 0.f),				glm::vec3(0.f, 1.f, 0.f),					glm::vec2(0.f, 0.f),
-	glm::vec3(0.5f, -0.5f, 0.f),				glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),
+	glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),						glm::vec3(0.f, 0.f, -1.f),
+	glm::vec3(-0.5f, -0.5, 0.f),				glm::vec3(0.f, 1.f, 0.f),					glm::vec2(0.f, 0.f),						glm::vec3(0.f, 0.f, -1.f),
+	glm::vec3(0.5f, -0.5f, 0.f),				glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),						glm::vec3(0.f, 0.f, -1.f),
 
 	//TRIANGLE TWO
 	/*glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),
 	glm::vec3(0.5f, -0.5, 0.f),					glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),*/
-	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(1.f, 1.f)
+	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(1.f, 1.f),						glm::vec3(0.f, 0.f, -1.f)
 };
 unsigned nrOfVertices = (sizeof(vertices) / sizeof(Vertex));
 
@@ -273,7 +273,7 @@ int main(void)
 	//[0][0.5][0][1][0][0][1][0][]
 	//POSITION
 	//GLuint attribLoc = glGetAttribLocation(core_program, "vertex_position");  if u dont have a shader location put where are zeros this attrib location
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,position));
+	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex, position));
 	//[][][][][][][][][][][] ->VERTEX
 	glEnableVertexAttribArray(0);
 
@@ -285,6 +285,9 @@ int main(void)
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, texcoord));
 	glEnableVertexAttribArray(2);
 
+	//Normal
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
+	glEnableVertexAttribArray(3);
 
 	//BIND VAO 0
 	glBindVertexArray(0);
@@ -393,6 +396,11 @@ int main(void)
 	glm::mat4 ProjectionMatrix(1.f);
 	ProjectionMatrix = glm::perspective(glm::radians(fov), static_cast<float>(framebufferWidth) / framebufferHeight, nearPlane, farPlane);
 
+
+	//LIGHTS
+	glm::vec3 lightPos0(0.f, 0.f, 1.f);
+
+
 	//init uniforms
 	glUseProgram(core_program);
 
@@ -400,6 +408,8 @@ int main(void)
 	glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"),1,GL_FALSE, glm::value_ptr(ModelMatrix));
 	glUniformMatrix4fv(glGetUniformLocation(core_program, "ViewMatrix"),1,GL_FALSE, glm::value_ptr(ViewMatrix));
 	glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"),1,GL_FALSE, glm::value_ptr(ProjectionMatrix));
+
+	glUniform3fv(glGetUniformLocation(core_program, "lightPos0"), 1, glm::value_ptr(lightPos0));
 
 	glUseProgram(0);
 
