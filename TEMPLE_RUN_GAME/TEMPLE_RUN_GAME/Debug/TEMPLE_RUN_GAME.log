@@ -1,4 +1,8 @@
-﻿  main.cpp
+﻿  Shader.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
+  main.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  e:\!!projects vs\!grafika_komputerowa\!pgk_2019\!project_for_lecturers\temple_run_2\temple_run\temple_run_game\dependencies\glfw\include\glfw\glfw3.h(98): note: see previous definition of 'APIENTRY'
+  Generating Code...
   TEMPLE_RUN_GAME.vcxproj -> E:\!!Projects VS\!GRAFIKA_KOMPUTEROWA\!PGK_2019\!project_for_lecturers\TEMPLE_RUN_2\TEMPLE_RUN\TEMPLE_RUN_GAME\Debug\TEMPLE_RUN_GAME.exe

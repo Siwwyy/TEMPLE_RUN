@@ -1,4 +1,5 @@
 #include "../HEADERS/libs.h"
+#include "../HEADERS/Shader.h"
 
 //INCLUDING OWN HEADER
 //#include "../HEADERS/Keyboard_Input.h"	//own header are including here
@@ -208,7 +209,6 @@ int main(void)
 	GLFWwindow * window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,"MY WINDOW", NULL, NULL);
 
 
-
 	glfwGetFramebufferSize(window, &framebufferWidth, &framebufferHeight);
 	glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);
 
@@ -239,11 +239,12 @@ int main(void)
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	//SHADER INIT
-	GLuint core_program;
-	if (!loadShaders(core_program))
-	{
-		glfwTerminate();
-	}
+	Shader core_program("vertex_core.glsl", "fragment_core.glsl");
+	//GLuint core_program;
+	//if (!loadShaders(core_program))
+	//{
+	//	glfwTerminate();
+	//}
 
 	//MODEL
 
@@ -402,14 +403,21 @@ int main(void)
 
 
 	//init uniforms
-	glUseProgram(core_program);
+	//glUseProgram(core_program);
+	//core_program.use();
 
 	//Move, rotate and scale
-	glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"),1,GL_FALSE, glm::value_ptr(ModelMatrix));
+	core_program.setMat4fv(ModelMatrix, "ModelMatrix");
+	core_program.setMat4fv(ViewMatrix, "ViewMatrix");
+	core_program.setMat4fv(ProjectionMatrix, "ProjectionMatrix");
+	/*glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"),1,GL_FALSE, glm::value_ptr(ModelMatrix));
 	glUniformMatrix4fv(glGetUniformLocation(core_program, "ViewMatrix"),1,GL_FALSE, glm::value_ptr(ViewMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"),1,GL_FALSE, glm::value_ptr(ProjectionMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"),1,GL_FALSE, glm::value_ptr(ProjectionMatrix));*/
 
-	glUniform3fv(glGetUniformLocation(core_program, "lightPos0"), 1, glm::value_ptr(lightPos0));
+	core_program.setVec3f(lightPos0, "lightPos0");
+	core_program.setVec3f(camPosition, "cameraPos");
+	/*glUniform3fv(glGetUniformLocation(core_program, "lightPos0"), 1, glm::value_ptr(lightPos0));
+	glUniform3fv(glGetUniformLocation(core_program, "cameraPos"), 1, glm::value_ptr(camPosition));*/
 
 	glUseProgram(0);
 
@@ -434,11 +442,14 @@ int main(void)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		//Use a program //IMPORTANT SENT THE PROGRAM BEFORE SENDING THE UNIFORMS!!
-		glUseProgram(core_program);
+		//glUseProgram(core_program);
+	
 
 		//Update uniforms
-		glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
-		glUniform1i(glGetUniformLocation(core_program,"texture1"),1);
+	/*	glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
+		glUniform1i(glGetUniformLocation(core_program,"texture1"),1);*/
+		core_program.set1i(0, "texture0");
+		core_program.set1i(1, "texture1");
 
 
 
@@ -453,17 +464,23 @@ int main(void)
 		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.y), glm::vec3(0.f, 1.f, 0.f));	//rotate of Y Axis
 		ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation.z), glm::vec3(0.f, 0.f, 1.f));	//rotate of Z Axis
 		ModelMatrix = glm::scale(ModelMatrix, scale);
-		glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"), 1, GL_FALSE, glm::value_ptr(ModelMatrix));
+	//	glUniformMatrix4fv(glGetUniformLocation(core_program, "ModelMatrix"), 1, GL_FALSE, glm::value_ptr(ModelMatrix));
+		core_program.setMat4fv(ModelMatrix, "ModelMatrix");
 
 		//glfwGetFramebufferSize(window, &framebufferWidth, &framebufferWidth);
 
 		//ProjectionMatrix = glm::mat4(1.f);
 		ProjectionMatrix = glm::perspective(glm::radians(fov), static_cast<float>((framebufferWidth) / framebufferHeight), nearPlane, farPlane);
 		
-		glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"), 1, GL_FALSE, glm::value_ptr(ProjectionMatrix));
+		//glUniformMatrix4fv(glGetUniformLocation(core_program, "ProjectionMatrix"), 1, GL_FALSE, glm::value_ptr(ProjectionMatrix));
+		core_program.setMat4fv(ProjectionMatrix, "ProjectionMatrix");
 
 		//resizer of window
 		//framebuffer_resize_callback(window, framebufferWidth, framebufferHeight);
+
+		//Use program //START BEFORE U STOP DRAWING!!!!!!!!!
+		core_program.use();
+
 
 		//Activate texture
 		glActiveTexture(GL_TEXTURE0);
@@ -493,7 +510,7 @@ int main(void)
 	glfwTerminate();
 
 	//DELETE PROGRAM
-	glDeleteProgram(core_program);
+	//glDeleteProgram(core_program);
 
 	//system("pause");
 	return EXIT_SUCCESS;

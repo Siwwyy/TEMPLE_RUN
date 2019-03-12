@@ -21,12 +21,18 @@
     <ClInclude Include="HEADERS\Keyboard_Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADERS\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SOURCE\Keyboard_Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

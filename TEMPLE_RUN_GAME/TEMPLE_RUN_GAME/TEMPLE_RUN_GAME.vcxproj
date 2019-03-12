@@ -137,10 +137,12 @@
   <ItemGroup>
     <ClInclude Include="HEADERS\Keyboard_Input.h" />
     <ClInclude Include="HEADERS\libs.h" />
+    <ClInclude Include="HEADERS\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\Keyboard_Input.cpp" />
     <ClCompile Include="SOURCE\main.cpp" />
+    <ClCompile Include="SOURCE\Shader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
