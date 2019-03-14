@@ -1,5 +1,6 @@
 #include "../HEADERS/libs.h"
 #include "../HEADERS/Shader.h"
+#include "../HEADERS/Texture.h"
 
 //INCLUDING OWN HEADER
 //#include "../HEADERS/Keyboard_Input.h"	//own header are including here
@@ -293,82 +294,84 @@ int main(void)
 	//BIND VAO 0
 	glBindVertexArray(0);
 
+	Texture texture_0("IMAGES/simpson.png", GL_TEXTURE_2D, 0);
 
-	//TEXTURE INIT 0
-	int image_width = 0;
-	int image_height = 0;
-	unsigned char* image = SOIL_load_image("IMAGES/simpson.png", &image_width, &image_height, nullptr, SOIL_LOAD_RGB);
-	//unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
+	////TEXTURE INIT 0
+	//int image_width = 0;
+	//int image_height = 0;
+	//unsigned char* image = SOIL_load_image("IMAGES/simpson.png", &image_width, &image_height, nullptr, SOIL_LOAD_RGB);
+	////unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
 
-	GLuint texture0; //0 means ID oh the image
-	glGenTextures(1, &texture0);
-	glBindTexture(GL_TEXTURE_2D, texture0);
+	//GLuint texture0; //0 means ID oh the image
+	//glGenTextures(1, &texture0);
+	//glBindTexture(GL_TEXTURE_2D, texture0);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);		//magnify pixels 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);					//minimalize pixels
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);		//magnify pixels 
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);					//minimalize pixels
 
-	if (image)
-	{
-		std::cerr << "TEXTURE_LOADED" << '\n';
-	/*	std::cerr << image << '\n';
-		std::cerr << image_width << '\n';
-		std::cerr << image_height << '\n';*/
-		assert(image != NULL);
-		assert(image_width != NULL);
-		assert(image_height != NULL);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);	//char is also a byte
-		glGenerateMipmap(GL_TEXTURE_2D);
-		glDisable(GL_CULL_FACE);		//to enable double side texture
-	}
-	else
-	{
-		std::cerr << "ERROR::TEXTURE_LOADING_FAILED" << '\n';
-	}
+	//if (image)
+	//{
+	//	std::cerr << "TEXTURE_LOADED" << '\n';
+	///*	std::cerr << image << '\n';
+	//	std::cerr << image_width << '\n';
+	//	std::cerr << image_height << '\n';*/
+	//	assert(image != NULL);
+	//	assert(image_width != NULL);
+	//	assert(image_height != NULL);
+	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);	//char is also a byte
+	//	glGenerateMipmap(GL_TEXTURE_2D);
+	//	glDisable(GL_CULL_FACE);		//to enable double side texture
+	//}
+	//else
+	//{
+	//	std::cerr << "ERROR::TEXTURE_LOADING_FAILED" << '\n';
+	//}
 
-	glActiveTexture(0);
-	glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
-	SOIL_free_image_data(image);
+	//glActiveTexture(0);
+	//glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
+	//SOIL_free_image_data(image);
 
+	
 
+	////TEXTURE INIT 1
+	Texture texture_1("IMAGES/mesh.png", GL_TEXTURE_2D, 1);
+	//int image_width_1 = 0;
+	//int image_height_1 = 0;
+	//unsigned char* image_1 = SOIL_load_image("IMAGES/mesh.png", &image_width_1, &image_height_1, nullptr, SOIL_LOAD_RGB);
+	////unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
 
-	//TEXTURE INIT 1
-	int image_width_1 = 0;
-	int image_height_1 = 0;
-	unsigned char* image_1 = SOIL_load_image("IMAGES/mesh.png", &image_width_1, &image_height_1, nullptr, SOIL_LOAD_RGB);
-	//unsigned char* image = SOIL_load_image("IMAGES/sunset.png", &image_width, &image_height, NULL, SOIL_LOAD_RGB);
+	//GLuint texture1; //0 means ID oh the image
+	//glGenTextures(1, &texture1);
+	//glBindTexture(GL_TEXTURE_2D, texture1);
 
-	GLuint texture1; //0 means ID oh the image
-	glGenTextures(1, &texture1);
-	glBindTexture(GL_TEXTURE_2D, texture1);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);		//magnify pixels 
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);					//minimalize pixels
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);	//S -> two coordinate, T -> one coordinate
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);		//magnify pixels 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);					//minimalize pixels
+	//if (image_1)
+	//{
+	//	std::cerr << "TEXTURE_LOADED" << '\n';
+	//	/*	std::cerr << image << '\n';
+	//		std::cerr << image_width << '\n';
+	//		std::cerr << image_height << '\n';*/
+	//	assert(image_1 != NULL);
+	//	assert(image_width_1 != NULL);
+	//	assert(image_height_1 != NULL);
+	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width_1, image_height_1, 0, GL_RGB, GL_UNSIGNED_BYTE, image_1);	//char is also a byte
+	//	glGenerateMipmap(GL_TEXTURE_2D);
+	//	glDisable(GL_CULL_FACE);
+	//}
+	//else
+	//{
+	//	std::cerr << "ERROR::TEXTURE_LOADING_FAILED" << '\n';
+	//}
 
-	if (image_1)
-	{
-		std::cerr << "TEXTURE_LOADED" << '\n';
-		/*	std::cerr << image << '\n';
-			std::cerr << image_width << '\n';
-			std::cerr << image_height << '\n';*/
-		assert(image_1 != NULL);
-		assert(image_width_1 != NULL);
-		assert(image_height_1 != NULL);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width_1, image_height_1, 0, GL_RGB, GL_UNSIGNED_BYTE, image_1);	//char is also a byte
-		glGenerateMipmap(GL_TEXTURE_2D);
-		glDisable(GL_CULL_FACE);
-	}
-	else
-	{
-		std::cerr << "ERROR::TEXTURE_LOADING_FAILED" << '\n';
-	}
-
-	glActiveTexture(0);
-	glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
-	SOIL_free_image_data(image_1);
+	//glActiveTexture(0);
+	//glBindTexture(GL_TEXTURE_2D, 0);	//0 means 0 no active binde texture, 0 texture in there
+	//SOIL_free_image_data(image_1);
 
 
 	//MATRIX MODEL, init MATRICES
@@ -448,8 +451,8 @@ int main(void)
 		//Update uniforms
 	/*	glUniform1i(glGetUniformLocation(core_program,"texture0"),0);
 		glUniform1i(glGetUniformLocation(core_program,"texture1"),1);*/
-		core_program.set1i(0, "texture0");
-		core_program.set1i(1, "texture1");
+		core_program.set1i(texture_0.get_texture_unit(), "texture0");
+		core_program.set1i(texture_1.get_texture_unit(), "texture1");
 
 
 
@@ -483,10 +486,12 @@ int main(void)
 
 
 		//Activate texture
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture0);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texture1);
+		texture_0.bind();
+		texture_1.bind();
+		/*glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture0);*/
+		/*glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, texture1);*/
 
 		//Bind vertex array object
 		glBindVertexArray(VAO);
