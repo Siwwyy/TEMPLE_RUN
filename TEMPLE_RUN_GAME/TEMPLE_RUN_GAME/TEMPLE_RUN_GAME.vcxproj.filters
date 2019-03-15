@@ -27,6 +27,9 @@
     <ClInclude Include="HEADERS\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HEADERS\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SOURCE\main.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SOURCE\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SOURCE\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

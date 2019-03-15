@@ -1,6 +1,7 @@
 #include "../HEADERS/libs.h"
 #include "../HEADERS/Shader.h"
 #include "../HEADERS/Texture.h"
+#include "../HEADERS/Material.h"
 
 //INCLUDING OWN HEADER
 //#include "../HEADERS/Keyboard_Input.h"	//own header are including here
@@ -247,7 +248,7 @@ int main(void)
 	//	glfwTerminate();
 	//}
 
-	//MODEL
+	//MODEL MESH
 
 
 	//VAO, VBO, EBO
@@ -374,6 +375,10 @@ int main(void)
 	//SOIL_free_image_data(image_1);
 
 
+	//MATERIAL 0
+	Material material0(glm::vec3(0.1f), glm::vec3(1.f), glm::vec3(1.f), texture_0.get_texture_unit(), texture_1.get_texture_unit());
+
+
 	//MATRIX MODEL, init MATRICES
 	glm::vec3 position(0.f);
 	glm::vec3 rotation(0.f);
@@ -454,7 +459,7 @@ int main(void)
 		core_program.set1i(texture_0.get_texture_unit(), "texture0");
 		core_program.set1i(texture_1.get_texture_unit(), "texture1");
 
-
+		material0.sendToShader(core_program);
 
 		//Move, rotation and scale in loop
 		//position.z -= 0.1f;
@@ -484,6 +489,8 @@ int main(void)
 		//Use program //START BEFORE U STOP DRAWING!!!!!!!!!
 		core_program.use();
 
+
+		//Update Uniforms
 
 		//Activate texture
 		texture_0.bind();
