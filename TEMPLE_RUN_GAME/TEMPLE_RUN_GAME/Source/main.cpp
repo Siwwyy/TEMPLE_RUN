@@ -1,4 +1,5 @@
 #include "../HEADERS/libs.h"
+#include "../HEADERS/Vertex.h"
 #include "../HEADERS/Shader.h"
 #include "../HEADERS/Texture.h"
 #include "../HEADERS/Material.h"
