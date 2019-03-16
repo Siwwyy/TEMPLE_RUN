@@ -2,6 +2,7 @@
 #include "../HEADERS/Vertex.h"
 #include "../HEADERS/Shader.h"
 #include "../HEADERS/Texture.h"
+#include "../HEADERS/Mesh.h"
 #include "../HEADERS/Material.h"
 
 //INCLUDING OWN HEADER
@@ -18,14 +19,14 @@ Vertex vertices[] =
 {
 	//Position	0 1 2							//Color	RGB									//Texcoords (texture coordinates)			//Normals
 	//TRIANGLE ONE
-	glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),						glm::vec3(0.f, 0.f, -1.f),
-	glm::vec3(-0.5f, -0.5, 0.f),				glm::vec3(0.f, 1.f, 0.f),					glm::vec2(0.f, 0.f),						glm::vec3(0.f, 0.f, -1.f),
-	glm::vec3(0.5f, -0.5f, 0.f),				glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),						glm::vec3(0.f, 0.f, -1.f),
+	glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),						glm::vec3(0.f, 0.f, 1.f),
+	glm::vec3(-0.5f, -0.5, 0.f),				glm::vec3(0.f, 1.f, 0.f),					glm::vec2(0.f, 0.f),						glm::vec3(0.f, 0.f, 1.f),
+	glm::vec3(0.5f, -0.5f, 0.f),				glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),						glm::vec3(0.f, 0.f, 1.f),
 
 	//TRIANGLE TWO
 	/*glm::vec3(-0.5f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),					glm::vec2(0.f, 1.f),
 	glm::vec3(0.5f, -0.5, 0.f),					glm::vec3(0.f, 0.f, 1.f),					glm::vec2(1.f, 0.f),*/
-	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(1.f, 1.f),						glm::vec3(0.f, 0.f, -1.f)
+	glm::vec3(0.5f, 0.5f, 0.f),					glm::vec3(1.f, 1.f, 0.f),					glm::vec2(1.f, 1.f),						glm::vec3(0.f, 0.f, 1.f)
 };
 unsigned nrOfVertices = (sizeof(vertices) / sizeof(Vertex));
 
@@ -250,10 +251,10 @@ int main(void)
 	//}
 
 	//MODEL MESH
+	Mesh test(vertices, nrOfVertices, indices, nrOfIndices);
 
-
-	//VAO, VBO, EBO
-	//GENERATE VAO AND BIND
+	/*VAO, VBO, EBO
+	GENERATE VAO AND BIND*/
 	GLuint VAO;
 	glCreateVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
@@ -316,7 +317,7 @@ int main(void)
 	//if (image)
 	//{
 	//	std::cerr << "TEXTURE_LOADED" << '\n';
-	///*	std::cerr << image << '\n';
+	//	std::cerr << image << '\n';
 	//	std::cerr << image_width << '\n';
 	//	std::cerr << image_height << '\n';*/
 	//	assert(image != NULL);
@@ -505,9 +506,10 @@ int main(void)
 		glBindVertexArray(VAO);
 
 
-		//Draw both draw a triangle
+		////Draw both draw a triangle
 		//glDrawArrays(GL_TRIANGLES, 0, nrOfVertices);		//drawing by vertices
 		glDrawElements(GL_TRIANGLES, nrOfIndices, GL_UNSIGNED_INT, 0);	//drawing by indices
+		test.render(&core_program);
 		//system("pause");
 		//End draw
 		glfwSwapBuffers(window);

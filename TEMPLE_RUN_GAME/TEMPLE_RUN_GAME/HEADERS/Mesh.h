@@ -40,6 +40,7 @@
 #include <fstream>
 
 #include "Vertex.h"
+#include "Shader.h"
 
 
 class Mesh
@@ -48,12 +49,29 @@ private:
 	/*
 		VARIABLES PRIVATE
 	*/
-	
+	//std::vector<Vertex> vertices;
+	//std::vector<GLuint> indices;
+
+	GLuint VAO;
+	GLuint VBO;
+	GLuint EBO;
+
+	glm::vec3 position;
+	glm::vec3 rotation;
+	glm::vec3 scale;
+	glm::mat4 ModelMatrix;
+
+	unsigned nrOfVertices;
+	unsigned nrOfIndices;
 	//////////////////////////////////////////////////////////////////////////////
 	/*
-		FUNKCJE PUBLIC
+		FUNKCJE PRIVATE
 	*/
-
+//	void initVertexData(Vertex * vertexArray, const unsigned & nrOfVertices, GLuint * indexArray, const unsigned & nrOfIndices);
+	void initVAO(Vertex * vertexArray, const unsigned & nrOfVertices, GLuint * indexArray, const unsigned & nrOfIndices);
+	void initModelMatrix();
+	void updateUniforms(Shader* shader);
+	void updateModelMatrix();
 	//////////////////////////////////////////////////////////////////////////////
 protected:
 
@@ -62,11 +80,13 @@ public:
 		KONSTRUKTORY PUBLIC
 	*/
 	Mesh();
+	Mesh(Vertex * vertexArray, const unsigned & nrOfVertices, GLuint * indexArray, const unsigned & nrOfIndicies);
 	//////////////////////////////////////////////////////////////////////////////
 	/*
 		FUNKCJE PUBLIC
 	*/
-	
+	void update();
+	void render(Shader * shader);
 	//////////////////////////////////////////////////////////////////////////////
 	/*
 		SETTERY PUBLIC

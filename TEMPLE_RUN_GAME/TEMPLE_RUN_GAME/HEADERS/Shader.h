@@ -50,7 +50,7 @@ private:
 	
 	//////////////////////////////////////////////////////////////////////////////
 	/*
-		FUNKCJE PUBLIC
+		FUNKCJE PRIVATE
 	*/
 	std::string loadShaderSource(const char* filename);
 	GLuint loadShader(GLenum type, const char* filename);
